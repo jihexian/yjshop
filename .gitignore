@@ -1,5 +1,7 @@
 assets/*
 !assets/.gitignore
+frontend/runtime/*
+backend/runtime/*
 protected/runtime/*
 !protected/runtime/.gitignore
 protected/data/*.db
