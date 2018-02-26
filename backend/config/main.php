@@ -11,16 +11,24 @@ return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
-    'bootstrap' => ['log'],
-    //整合yii2-admin wsyone 2017.12.26 
+    'bootstrap' => ['log','plugins'],
+    
     'modules' => [
+        //整合yii2-admin wsyone 2017.12.26 
         'admin' => [
             'class' => 'mdm\admin\Module',
             //'layout' => 'left-menu',//yii2-admin的导航菜单
             'mainLayout' => '@backend/views/layouts/main.php',//选择展示的页面框架
-
-
+        ],
+        'plugins' => [
+            'class' => 'lo\plugins\Module',
+            'pluginsDir'=>[
+            '@lo/plugins/core', // default dir with core plugins
+           // '@common/plugins', // dir with our plugins
         ]
+    ],
+
+
      ],
   
       "aliases" => [
@@ -80,6 +88,13 @@ return [
         ],
      
        //结束
+        'plugins' => [
+        'class' => lo\plugins\components\PluginsManager::class,
+        'appId' => 2 // lo\plugins\BasePlugin::APP_BACKEND or our appId
+        ],
+        'view' => [
+            'class' => lo\plugins\components\View::class,
+        ],
 
      
     ],

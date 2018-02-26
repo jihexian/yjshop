@@ -1,6 +1,6 @@
 <?php
 return [
-     'language'=>'zh-CN',//设置语言
+    'language'=>'zh-CN',//设置语言
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',

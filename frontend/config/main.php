@@ -9,7 +9,7 @@ $params = array_merge(
 return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log','plugins'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [
@@ -36,28 +36,20 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
-        支持smarty拓展
-         */
-     /*   'view' => [
-            'renderers' => [
-                'tpl' => [
-                    'class' => 'yii\smarty\ViewRenderer',
-                    //'cachePath' => '@runtime/Smarty/cache',
-                ],
-            ],
-        ],*/
-
-      
-
-        /*
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
+        'plugins' => [
+            'class' => lo\plugins\components\PluginsManager::class,
+            'appId' => 1, // lo\plugins\BasePlugin::APP_FRONTEND,
+            // by default
+            'enablePlugins' => true,
+            'shortcodesParse' => true,
+            'shortcodesIgnoreBlocks' => [
+            '<pre[^>]*>' => '<\/pre>',
+            //'<div class="content[^>]*>' => '<\/div>',
+            ]
         ],
-        */
+        'view' => [
+            'class' => lo\plugins\components\View::class,
+        ]
     ],
     'params' => $params,
 ];

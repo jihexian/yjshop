@@ -9,7 +9,7 @@ $params = array_merge(
 return [
     'id' => 'app-console',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log','plugins'],
     'controllerNamespace' => 'console\controllers',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
@@ -22,6 +22,13 @@ return [
           ],
     ],
     'components' => [
+        'plugins' => [
+        'class' => lo\plugins\components\PluginsManager::class,
+        'appId' => 2 // lo\plugins\BasePlugin::APP_BACKEND or our appId
+        ],
+        'view' => [
+            'class' => lo\plugins\components\View::class,
+        ],
         'log' => [
             'targets' => [
                 [

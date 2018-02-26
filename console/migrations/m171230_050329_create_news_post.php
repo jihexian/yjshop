@@ -3,7 +3,7 @@
  * post
  */
 use yii\db\Migration;
-
+use yii\db\Schema;
 /**
  * Class m171230_050329_create_news_post
  */
@@ -16,8 +16,8 @@ class m171230_050329_create_news_post extends Migration
     {
         $this->createTable('post',[
             'id'=>Schema::TYPE_PK,
-            'title'=>Schema::TYPE_STRING,'NOT NULL',
-            ])
+            'title'=>Schema::TYPE_STRING,
+            ]);
 
     }
 
